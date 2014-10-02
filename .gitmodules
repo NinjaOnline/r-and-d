@@ -1,0 +1,3 @@
+[submodule "libs/monet"]
+	path = libs/monet
+	url = https://github.com/cwmyers/monet.js.git
