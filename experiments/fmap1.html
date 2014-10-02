@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../libs/monet/src/main/javascript/monet.js" type="text/javascript"></script>
+    <script src="../libs/monet/src/main/javascript/monet-pimp.js" type="text/javascript"></script>
+    <script src="../libs/monet/example/bower_components/underscore/underscore-min.js" type="text/javascript"></script>
+    <script src="../libs/monet/example/bower_components/jquery/jquery.min.js" type="text/javascript"></script>
+    <title>Example R and D page</title>
+</head>
+<body>
+
+<span id="SomeId">Some text</span>
+
+<div>
+    <span>input 1: <input type="text" id="input1"/> </span>
+    <span>input 2: <input type="text" id="input2"/> </span>
+    <span>input 3: <input type="text" id="input3"/> </span>
+</div>
+
+<div>
+    <span>Result:</span> <span id="result"></span>
+</div>
+
+<script>
+
+$('input').keyup(function(event) {
+	console.log(event);
+
+	var value = $(this).val();
+
+	var m1 = Maybe.fromNull(value);
+
+	var m2 = m1.flatMap(function(v) {
+		console.log(v);
+	});
+});
+
+</script>
+
+</body>
+</html>
