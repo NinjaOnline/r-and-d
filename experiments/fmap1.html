@@ -28,11 +28,38 @@ $('input').keyup(function(event) {
 
 	var value = $(this).val();
 
-	var m1 = Maybe.fromNull(value);
+	var maybeWithValue = Maybe.fromNull(value);
+	var maybeWithNULL = Maybe.fromNull(null);
 
-	var m2 = m1.flatMap(function(v) {
+	var maybeWithValueAfterFlatMap = maybeWithValue
+	.map(function(v) {
+		var newV = 'm(' + v + ')';
+		return newV;
+	})
+	.flatMap(function(v) {
 		console.log(v);
-	});
+		return Maybe.Some(v + '-' + v);
+	})
+	.flatMap(function(v) {
+		console.log(v);
+		return Maybe.Some(v + '-' + v);
+	}).orSome('test');
+
+	var maybeWithNULLAfterFlatMap = maybeWithNULL.flatMap(function(v) {
+		console.log(v);
+		return Maybe.Some(v + '-' + v);
+	})
+	.flatMap(function(v) {
+		console.log(v);
+		return Maybe.Some(v + '-' + v);
+	}).orSome('test');
+
+
+	console.log('WithValue = ' + maybeWithValueAfterFlatMap);
+	$('#input2').val(maybeWithValueAfterFlatMap);
+	console.log('WithNULL = ' + maybeWithNULLAfterFlatMap);
+	$('#input3').val(maybeWithNULLAfterFlatMap);
+
 });
 
 </script>
