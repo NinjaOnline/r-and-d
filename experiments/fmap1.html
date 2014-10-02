@@ -28,7 +28,7 @@ $('input').keyup(function(event) {
 
 	var value = $(this).val();
 
-	var maybeWithValue = Maybe.fromNull(value);
+	var maybeWithValue = Maybe.fromNull(value != '' ? value : null);
 	var maybeWithNULL = Maybe.fromNull(null);
 
 	var maybeWithValueAfterFlatMap = maybeWithValue
